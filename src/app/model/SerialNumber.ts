@@ -1,6 +1,6 @@
 
 export interface SerialNumber {
-  id?: number;
+  id?: string;
 
   number: string;
 

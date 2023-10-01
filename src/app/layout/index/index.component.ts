@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SerialNumberService} from "../../service/serial-number.service";
 import {SerialNumber} from "../../model/SerialNumber";
-import {SelectionModel} from "@angular/cdk/collections";
 import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
@@ -11,8 +10,7 @@ import {MatTableDataSource} from "@angular/material/table";
 })
 export class IndexComponent implements OnInit {
   isSerialNumbersLoaded = false;
-  displayedColumns: string[] = ['select', 'number', 'ptArt', 'savedAt'];
-  selection = new SelectionModel<SerialNumber>(true, []);
+  displayedColumns: string[] = ['number', 'ptArt', 'savedAt'];//columns of table
   lastAddedSerials: SerialNumber[];
   dataSource = new MatTableDataSource<SerialNumber>;
 
@@ -22,10 +20,14 @@ export class IndexComponent implements OnInit {
         "id": "id", "number": "number", "ptArt": "art", "comment": "comment",
         "customer": "customer", "savedAt": new Date(),
         "createdAt": new Date()
+      },
+      {
+        "id": "2", "number": "1234", "ptArt": "805", "comment": "comment",
+        "customer": "customer", "savedAt": new Date(),
+        "createdAt": new Date()
       }
     ];
   }
-
 
   ngOnInit(): void {
     this.dataSource.data = this.lastAddedSerials;
@@ -40,31 +42,6 @@ export class IndexComponent implements OnInit {
            }
          }
        )*/
-  }
-
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  toggleAllRows() {
-    if (this.isAllSelected()) {
-      this.selection.clear();
-      return;
-    }
-
-    this.selection.select(...this.dataSource.data);
-  }
-
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: SerialNumber): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.number + 1}`;
   }
 
 }

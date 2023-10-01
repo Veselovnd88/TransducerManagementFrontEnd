@@ -9,21 +9,23 @@ import {MatListModule} from "@angular/material/list";
 import {CommonModule} from "@angular/common";
 import {MatTableModule} from "@angular/material/table";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent
   ],
-  imports: [
-    BrowserModule,
-    MaterialModule,
-    HttpClientModule,
-    MatListModule,
-    CommonModule,
-    MatTableModule,
-    MatCheckboxModule
-  ],
+    imports: [
+        BrowserModule,
+        MaterialModule,
+        HttpClientModule,
+        MatListModule,
+        CommonModule,
+        MatTableModule,
+        MatCheckboxModule,
+        MatPaginatorModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -9,6 +9,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatCardModule} from "@angular/material/card";
+import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   exports: [
@@ -21,7 +22,9 @@ import {MatCardModule} from "@angular/material/card";
     MatMenuModule,
     MatDividerModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule
   ]
 })
 

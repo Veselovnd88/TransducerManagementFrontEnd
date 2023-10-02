@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SerialNumberService} from "../../service/serial-number.service";
 import {SerialNumber} from "../../model/SerialNumber";
 import {MatTableDataSource} from "@angular/material/table";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-index',
@@ -13,6 +14,7 @@ export class IndexComponent implements OnInit {
   displayedColumns: string[] = ['number', 'ptArt', 'savedAt'];//columns of table
   lastAddedSerials: SerialNumber[];
   dataSource = new MatTableDataSource<SerialNumber>;
+  public checkSerialForm!: FormGroup;
 
   constructor(private serialNumberService: SerialNumberService) {
     this.lastAddedSerials = [
@@ -31,6 +33,9 @@ export class IndexComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource.data = this.lastAddedSerials;
+    this.checkSerialForm = new FormGroup({
+      findSerial: new FormControl<string>('', [Validators.required])
+    });
     /* this.serialNumberService.getLastAddedSerials()
        .subscribe({
            next: (serials) => {
@@ -42,6 +47,11 @@ export class IndexComponent implements OnInit {
            }
          }
        )*/
+  }
+
+  public submit(): void {
+    console.log("Submit pressed")
+    console.log(this.checkSerialForm.value.findSerial)
   }
 
 }

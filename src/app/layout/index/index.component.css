@@ -23,3 +23,7 @@
   text-align: center;
   font-weight: bold;
 }
+
+.input-serial-form-field {
+  width: 400px;
+}
